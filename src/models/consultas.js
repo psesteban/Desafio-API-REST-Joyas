@@ -1,6 +1,6 @@
 import data from './querys.js'
 
-export const filtros = async ({ precio_max, precio_min, categoria, metal }) => {
+export const filtros = async ({ precio_max: precioMax, precio_min: precioMin, categoria, metal }) => {
   let filtros = []
   const values = []
   const agregarFiltro = (campo, comparador, valor) => {
@@ -8,8 +8,8 @@ export const filtros = async ({ precio_max, precio_min, categoria, metal }) => {
     const { length } = filtros
     filtros.push(`${campo} ${comparador} $${length + 1}`)
   }
-  if (precio_max) agregarFiltro('precio', '<=', precio_max)
-  if (precio_min) agregarFiltro('precio', '>=', precio_min)
+  if (precioMax) agregarFiltro('precio', '<=', precioMax)
+  if (precioMin) agregarFiltro('precio', '>=', precioMin)
   if (categoria) agregarFiltro('categoria', '=', categoria)
   if (metal) agregarFiltro('metal', '=', metal)
 
