@@ -1,11 +1,11 @@
-import dotenv from 'dotenv'
+// import dotenv from 'dotenv'
 import format from 'pg-format'
 import pool from '../database/config.js'
 
-dotenv.config()
+// dotenv.config() // para ingresar url base
 
-const { PORT } = process.env
-const BASE_URL = process.env.NODE_ENV === 'production' ? process.env.DOMAIN_URL_APP : `http://localhost:${PORT}`
+// const { PORT } = process.env // para ingresar url base
+// const BASE_URL = process.env.NODE_ENV === 'production' ? process.env.DOMAIN_URL_APP : `http://localhost:${PORT}` // para ingresar url base
 
 const findAll = async ({ limit = 5, page = 1, order_by: orderBy = 'stock_DESC' }) => {
   try {
@@ -31,7 +31,7 @@ const findAll = async ({ limit = 5, page = 1, order_by: orderBy = 'stock_DESC' }
     const results = rows.map((row) => ({
       ...row,
       name: `${row.nombre}`,
-      href: `${BASE_URL}/joyas/${row.id}`
+      href: `joyas/joya/${row.id}`
     }))
 
     return {
